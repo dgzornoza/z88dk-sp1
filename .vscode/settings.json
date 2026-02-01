@@ -8,7 +8,9 @@
         "**/Thumbs.db": true,
         ".devcontainer": true,
         ".tmp": true,
-        "build": false
+        "src/**/*.lis": true,
+        "obj": true,
+        "bin": false
     },
     "C_Cpp.default.includePath": [
         "/opt/z88dk/include/_DEVELOPMENT/common"

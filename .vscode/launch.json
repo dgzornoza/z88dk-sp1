@@ -19,8 +19,8 @@
             },
             "z88dkv2": [
                 {
-                    "path": "./build/**/*.lis",
-                    "mapFile": "./build/z88dk-sp1.map",
+                    "path": "./bin/**/*.lis",
+                    "mapFile": "./bin/z88dk-sp1.map",
                     "srcDirs": [
                         ""
                     ]
@@ -36,7 +36,7 @@
             ],
             "startAutomatically": true,
             "rootFolder": "${workspaceFolder}",
-            "load": "./build/z88dk-sp1.sna",
+            "load": "./bin/z88dk-sp1.sna",
             "smallValuesMaximum": 513,
             "tmpDir": ".tmp"
         },
@@ -53,8 +53,8 @@
             },
             "z88dkv2": [
                 {
-                    "path": "./build/**/*.lis",
-                    "mapFile": "./build/z88dk-sp1.map",
+                    "path": "./bin/**/*.lis",
+                    "mapFile": "./bin/z88dk-sp1.map",
                     "srcDirs": [
                         ""
                     ]
@@ -71,7 +71,7 @@
             ],
             "startAutomatically": true,
             "rootFolder": "${workspaceFolder}",
-            "load": "./build/z88dk-sp1.sna",
+            "load": "./bin/z88dk-sp1.sna",
             "smallValuesMaximum": 513,
             "tmpDir": ".tmp"
         },
@@ -87,8 +87,8 @@
             },
             "z88dkv2": [
                 {
-                    "path": "./build/**/*.lis",
-                    "mapFile": "./build/z88dk-sp1.map",
+                    "path": "./bin/**/*.lis",
+                    "mapFile": "./bin/z88dk-sp1.map",
                     "srcDirs": [
                         ""
                     ]
@@ -105,7 +105,7 @@
             ],
             "startAutomatically": true,
             "rootFolder": "${workspaceFolder}",
-            "load": "./build/z88dk-sp1.sna",
+            "load": "./bin/z88dk-sp1.sna",
             "smallValuesMaximum": 513,
             "tmpDir": ".tmp"
         }

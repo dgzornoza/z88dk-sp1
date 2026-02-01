@@ -42,7 +42,7 @@ OBJECT_SOURCES = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(patsubst src/%.asm,$(OBJ_DI
 TOOLCHAIN=zcc
 TARGET=+zx
 VERBOSITY=-vn #(-v: show verbose, -vn: not show verbose)
-OUT_DIR=build
+OUT_DIR=bin
 PRAGMA_FILE=zpragma.inc
 
 # Flags
