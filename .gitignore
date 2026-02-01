@@ -47,7 +47,6 @@ app/
 # Editor / IDE
 # -----------------------------------------
 # VS Code
-.vscode/
 *.code-workspace
 
 # CLion / JetBrains
