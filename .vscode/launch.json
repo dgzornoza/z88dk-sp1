@@ -19,8 +19,8 @@
             },
             "z88dkv2": [
                 {
-                    "path": "./bin/**/*.lis",
-                    "mapFile": "./bin/z88dk-sp1.map",
+                    "path": "./build/**/*.lis",
+                    "mapFile": "./build/z88dk-sp1.map",
                     "srcDirs": [
                         ""
                     ]
@@ -53,8 +53,8 @@
             },
             "z88dkv2": [
                 {
-                    "path": "./bin/**/*.lis",
-                    "mapFile": "./bin/z88dk-sp1.map",
+                    "path": "./build/**/*.lis",
+                    "mapFile": "./build/z88dk-sp1.map",
                     "srcDirs": [
                         ""
                     ]
@@ -87,8 +87,8 @@
             },
             "z88dkv2": [
                 {
-                    "path": "./bin/**/*.lis",
-                    "mapFile": "./bin/z88dk-sp1.map",
+                    "path": "./build/**/*.lis",
+                    "mapFile": "./build/z88dk-sp1.map",
                     "srcDirs": [
                         ""
                     ]

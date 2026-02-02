@@ -66,11 +66,13 @@ int main(void) {
     }
 }
 ```
-
-## 5. Conceptos Clave
+## 4. Funciones
 
 - [`sp1_Initialize`](z88dk-sp1.md#sp1_initialize): Prepara las tablas internas y el estado inicial de la pantalla.
 - [`sp1_Invalidate`](z88dk-sp1.md#sp1_invalidate): Marca un área de la pantalla para que el motor sepa que debe redibujarla en la próxima actualización.
 - [`sp1_UpdateNow`](z88dk-sp1.md#sp1_updatenow): Es la función que realmente realiza el dibujo en la memoria de video procesando la lista de celdas modificadas.
+
+## 5. Conceptos Clave
+
 - **Gestión de Memoria:** SP1 realiza asignaciones dinámicas implícitas al crear sprites, por lo que el parámetro `CLIB_BALLOC_TABLE_SIZE = 1` en los pragmas es obligatorio.
 

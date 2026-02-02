@@ -25,8 +25,8 @@ void run_example1(void) {
     /* Marcar toda la pantalla como "sucia" para el primer renderizado */
     sp1_Invalidate(&full_screen);
 
-    // ejecutar el bucle principal hasta que se presione BACKSPACE
-    wait_for_backspace(example1_main_loop);
+    // ejecutar el bucle principal hasta que se presione INTRO
+    wait_for_intro_key(example1_main_loop);
 }
 
 

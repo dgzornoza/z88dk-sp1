@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <input.h>
 
-void wait_for_backspace(void (*callback)(void)) __z88dk_fastcall;
+void wait_for_intro_key(void (*callback)(void)) __z88dk_fastcall;
 
 void run_example1(void);
 void run_example2(void);
