@@ -4,53 +4,66 @@
 #include "modules/modules.h"
 #include <input/input_zx.h>
 
-static void print_menu(void) {
+/** Cambiar por el numero de tutorial a ejecutar */
+int module = 3;
+int submodule = 4;
+int sample = 2;
+
+int main(void)
+{
     // limpiar pantalla
-    zx_cls(PAPER_WHITE);
-    puts("\x16\x01\x01");
+    zx_border(PAPER_BLACK);
+    zx_cls(PAPER_BLACK);
 
-    printf("Tutorial SP1 - Menu\n");
-    printf("==============================\n");
-    printf("(Presiona INTRO para salir del ejemplo)\n\n");
-    printf("1) Preparacion e Inicializacion\n");
-    printf("2) Graficos de Fondo (UDGs)\n");
-    printf("3) Sprites y Movimiento\n");
-    printf("4) Logica de Juego y Sincronismo\n");
-    printf("5) Gestion Avanzada y 128k\n");
-    printf("6) Scroll y Parallax\n");
-    printf("\nSelecciona un numero: ");
-}
-
-int main(void) {
-    unsigned char key = 0;
-
-    while (1) {
-        print_menu();
-
-        in_wait_key();
-        key = in_inkey();
-        in_wait_nokey();
-
-        switch (key) {
-            case '1':
-                run_example1();
+    switch (module)
+    {
+    case 1:
+        run_module1();
+        break;
+    case 2:
+        run_module2();
+        break;
+    case 3:
+        switch (submodule)
+        {
+        case 1:
+            run_module3_1();
+            break;
+        case 2:
+            run_module3_2();
+            break;
+        case 3:
+            switch (sample)
+            {
+            case 1:
+                run_module3_3_1();
                 break;
-            // case '2':
-            //     break;
-            // case '3':
-            //     break;
-            // case '4':
-            //     break;
-            // case '5':
-            //     break;
-            // case '6':
-            //     break;
-            // default:
-            //     printf("key = %d\n", key);
-            //     printf("key = %c\n", key);
-            //     break;
+            case 2:
+                run_module3_3_2();
+                break;
+            }
+            break;
+        case 4:
+            switch (sample)
+            {
+            case 1:
+                run_module3_4_1();
+                break;
+            case 2:
+                run_module3_4_2();
+                break;
+            }
+            break;
         }
+
+        break;
+    case 4:
+        // run_module4();
+        break;
+    default:
+        printf("Modulo no encontrado");
+        break;
     }
+
+    return 1;
 }
-
-

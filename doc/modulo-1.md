@@ -2,6 +2,8 @@
 
 Este módulo cubre la configuración inicial del entorno de desarrollo y la puesta en marcha del motor gráfico **SP1**.
 
+Codigo base: [src/modules/module1.c](../src/modules/module1.c)
+
 ## 1. Introducción a SP1
 
 La librería **SP1** es un motor de sprites por software que utiliza un sistema de **actualización diferencial**. En lugar de redibujar toda la pantalla en cada frame, divide la pantalla en celdas de 8x8 píxeles. Solo las celdas que cambian (porque un sprite pasa por ellas o el fondo se modifica) se marcan como "sucias" y se redibujan, lo que permite un alto rendimiento y una visualización **libre de parpadeos** (flicker-free) sin necesidad de sincronización compleja.
@@ -33,39 +35,6 @@ Para que el compilador organice correctamente la memoria del Spectrum y SP1 func
 #pragma output CRT_STACK_SIZE         = 128     // Tamaño del stack principal
 ```
 
-## 4. Código Base (main.c)
-
-Este es el código mínimo para inicializar el motor. El flujo consiste en inicializar la librería, definir el área de juego e invalidar la pantalla para forzar el primer dibujo.
-
-```c
-#include <arch/zx.h>
-#include <arch/zx/sp1.h>
-#include <z80.h>
-
-/* Definir un rectangulo que cubre toda la pantalla (32x24 celdas) */
-struct sp1_Rect full_screen = {0, 0, 32, 24};
-
-int main(void) {
-    /* Establecer el borde en blanco */
-    zx_border(INK_WHITE);
-
-    /*
-       Inicialiar SP1:
-       - SP1_IFLAG_MAKE_ROTTBL: Crea tablas de rotacion para los sprites.
-       - SP1_IFLAG_OVERWRITE_TILES: Permite sobrescribir los tiles de fondo.
-       - SP1_IFLAG_OVERWRITE_DFILE: Inicializa el area de pantalla de la libreria.
-    */
-    sp1_Initialize(SP1_IFLAG_MAKE_ROTTBL | SP1_IFLAG_OVERWRITE_TILES |  SP1_IFLAG_OVERWRITE_DFILE, INK_WHITE | PAPER_BLACK, ' ');
-
-    /* Marcar toda la pantalla como "sucia" para el primer renderizado */
-    sp1_Invalidate(&full_screen);
-
-    while (1) {
-        /* Fuerza el redibujado de las celdas invalidadas */
-        sp1_UpdateNow();
-    }
-}
-```
 ## 4. Funciones
 
 - [`sp1_Initialize`](z88dk-sp1.md#sp1_initialize): Prepara las tablas internas y el estado inicial de la pantalla.
@@ -76,3 +45,5 @@ int main(void) {
 
 - **Gestión de Memoria:** SP1 realiza asignaciones dinámicas implícitas al crear sprites, por lo que el parámetro `CLIB_BALLOC_TABLE_SIZE = 1` en los pragmas es obligatorio.
 
+## Ejercicios prácticos
+## Conclusión
