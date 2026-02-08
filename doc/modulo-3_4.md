@@ -12,7 +12,7 @@ por píxel vertical y horizontalmente.
 ## Concepto general
 
 SP1 representa un sprite grande como una serie de "columnas" de 8 píxeles de
-ancho. Cada columna puede contener N filas (si hay 2 filas, seria un sprite de 16×16). 
+ancho. Cada columna puede contener N filas (si hay 2 filas, seria un sprite de 16×16).
 Cuando un sprite esta desplazado vertical, SP1 ajusta el puntero de lectura dentro del bloque de memoria del sprite, por lo que es necesario incluir bytes de relleno (padding) antes y después de los datos reales para evitar leer memoria aleatoria (como se indico en modulos anteriores).
 
 Para sprites enmascarados cada línea de una columna suele almacenarse como:
@@ -20,11 +20,11 @@ Para sprites enmascarados cada línea de una columna suele almacenarse como:
 vacías (con máscara) antes y después de cada columna (padding) para permitir desplazamiento
 vertical por píxel sin corromper las columnas adyacentes.
 
-## Datos de un sprite 16×16 
+## Datos de un sprite 16×16
 
-Un sprite 16×16 se compone de 2 columnas de 8×16 cada una. 
-Si está alineado en un grid de 8×8 ocupa 4 celdas, si está desplazado horizontal y 
-verticalmente puede llegar a ocupar hasta 9 celdas. 
+Un sprite 16×16 se compone de 2 columnas de 8×16 cada una.
+Si está alineado en un grid de 8×8 ocupa 4 celdas, si está desplazado horizontal y
+verticalmente puede llegar a ocupar hasta 9 celdas.
 SP1 maneja estos detalles si le damos la estructura de columnas correcta y padding correcto (como se explico anteriormente).
 
 El formato es el mismo que para sprites más pequeños, pero con más filas graficas por columna.
@@ -38,35 +38,35 @@ SECTION rodata_user
 PUBLIC _sprite_bubble_column_1
 PUBLIC _sprite_bubble_column_2
 
-		; padding (7 filas con máscara)
-		defb @11111111, @00000000
-		defb @11111111, @00000000
-		; ... (5 filas más) ...
+  ; padding (7 filas con máscara)
+  defb @11111111, @00000000
+  defb @11111111, @00000000
+  ; ... (5 filas más) ...
 
 _sprite_bubble_column_1:
-		; 16 filas: primero el byte de mascara y luego el sprite grafico
-		defb @11111100, @00000000
-		defb @11110000, @00000011
-		; ... 14 filas (grafico) ...
+  ; 16 filas: primero el byte de mascara y luego el sprite grafico
+  defb @11111100, @00000000
+  defb @11110000, @00000011
+  ; ... 14 filas (grafico) ...
 
-		; padding (8 filas con máscara)
-		defb @11111111, @00000000
-		defb @11111111, @00000000
-		; ... (6 filas más) ...
+  ; padding (8 filas con máscara)
+  defb @11111111, @00000000
+  defb @11111111, @00000000
+  ; ... (6 filas más) ...
 
 _sprite_bubble_column_2:
-		defb @00111111, @00000000
-		defb @00001111, @11000000
-		; ... (resto de filas y padding)
+  defb @00111111, @00000000
+  defb @00001111, @11000000
+  ; ... (resto de filas y padding)
 ```
 
 En este formato el sprite esta formado por:
- - 7 filas vacías antes (padding)
- - 16 filas (gráfico columna 1: máscara + dato)
- - 8 filas vacías después (padding)
- - 16 filas (gráfico columna 2: máscara + dato)
- - 8 filas vacías después (padding)
 
+- 7 filas vacías antes (padding)
+- 16 filas (gráfico columna 1: máscara + dato)
+- 8 filas vacías después (padding)
+- 16 filas (gráfico columna 2: máscara + dato)
+- 8 filas vacías después (padding)
 
 ## Inicialización y creación del sprite
 
@@ -75,14 +75,14 @@ Pasos: crear un sprite de 16x16 con dos columnas, cada una con su bloque de fila
 > Codigo base: [src/modules/module3_4_1.c](../src/modules/module3_4_1.c)
 
 Puntos clave:
+
 - `SP1_DRAW_MASK2LB` / `SP1_DRAW_MASK2` / `SP1_DRAW_MASK2RB`: variantes de
-	dibujo que indican uso de máscara y control de rotación en bordes izquierdo,
-	interior y derecho.
+ dibujo que indican uso de máscara y control de rotación en bordes izquierdo,
+ interior y derecho.
 - `SP1_TYPE_2BYTE`: indica que cada línea usa dos bytes (máscara + dato).
 - El tercer argumento de `sp1_CreateSpr` indica la altura máxima en celdas de
-	8×8 que ocupará la columna (por ejemplo `3` → 2 celdas = 16px de alto + 1 celda de padding).
+ 8×8 que ocupará la columna (por ejemplo `3` → 2 celdas = 16px de alto + 1 celda de padding).
 - Crear el sprite con la primera columna, añadir una segunda columna con `sp1_AddColSpr` y por ultimo la columna con el borde derecho (RB) para completar el sprite con el limite derecho (RightBoundary).
-
 
 ### Método alternativo: inicializar sprite sin datos y pasar dirección al mover
 
@@ -116,13 +116,13 @@ filas (mask+data), padding antes/after y se añaden mediante `sp1_AddColSpr`.
 ## Buenas prácticas
 
 - **Padding**: 7 filas vacías antes y 8 después de cada columna para permitir
-	posicionamiento vertical por píxel.
+ posicionamiento vertical por píxel.
 - **Documentar offsets**: anotar el tamaño (filas útiles) y el espaciado entre
-	bloques cuando se compone un sprite por columnas.
+ bloques cuando se compone un sprite por columnas.
 - **Máscaras para preservar fondo**: usar el formato mask+data para sprites
-	que no deben borrar el fondo.
+ que no deben borrar el fondo.
 - **Datos en rodata**: mantener los datos gráficos en secciones `rodata_user`
-	para ahorrar RAM y facilitar la compartición entre módulos.
+ para ahorrar RAM y facilitar la compartición entre módulos.
 
 ## Referencias SP1 usadas en este módulo
 
@@ -136,8 +136,6 @@ filas (mask+data), padding antes/after y se añaden mediante `sp1_AddColSpr`.
 
 ## Ejercicios propuestos
 
-
-
 ## Conclusión
 
 SP1 maneja la complejidad del posicionamiento y rotación de columnas; nuestro
@@ -145,5 +143,3 @@ trabajo consiste en preparar los datos por columna (mask+data), añadir el
 padding correcto y registrar las columnas con `sp1_AddColSpr`. Con estos
 patrones podemos crear sprites grandes y coloreados reutilizando las técnicas
 vistos en los módulos anteriores.
-
-

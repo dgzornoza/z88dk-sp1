@@ -36,6 +36,7 @@ Código
 [ 8 bytes de cero ]
 
 > Notas:
+>
 > - Este padding es obligatorio tanto para sprites sin máscara como para sprites con máscara (SP1_DRAW_MASK2LB).
 > - Cada sprite debe tener su propio bloque contiguo con padding, no se puede compartir entre sprites distintos.
 
@@ -48,6 +49,10 @@ El contenido del padding siempre es cero, pero su presencia es lo que garantiza 
 
 Como se ha comentado, un sprite se construye añadiendo columnas de 8 píxeles de ancho mediante la función sp1_AddColSpr, del mismo modo que el padding usado para el desplazamiento vertical, el padding horizontal se gestiona añadiendo columnas, esto significa, que aunque solo existe un caracter para el sprite, hace falta especificar una columna (ademas de la creacion con `sp1_CreateSpr`) indicando las funciones de dibujo con sufijo LB y RB para indicar con los limites izquierdo y derecho que seran usados, esto permite a SP1 controlar el padding horizontal. De no añadirse esta columna, el sprite se dibujaria sin padding horizontal, lo que provocaria que el sprite se recorte por la derecha al desplazarse horizontalmente (ademas sin desplazamiento, no seria visualizado).
 
+### Colores y atributos
+
+Los sprites en SP1 pueden tener atributos de color, lo que permite crear personajes y objetos con colores. Cada caracter de un sprite solo puede tener 2 colores INK y PAPER, si son mezclados con los del fondo puede ocurrir un choque de atributos (attribute clash). Para evitar hay que diseñar los sprites con cuidado, usando colores que no choquen con el fondo o limitando el uso de color a ciertas partes del sprite.
+Para asignar atributos a un sprite, se asignan atributos de color a cada celda ocupada por el sprite. Esto se hace mediante la función `sp1_IterateSprChar()`, que como segundo parametro acepta una funcion callback que se ejecuta por cada celda del sprite, recibiendo como argumento la posición de la celda y permitiendo asignar atributos de color a esa celda (la posicion de la celda sera un numero de 0 a N-1, usando como origen la esquina superior izquierda del sprite, y contando de izquierda a derecha y de arriba a abajo).
 
 ## 4. Referencias SP1 usadas en el ejemplo
 
@@ -56,10 +61,12 @@ Como se ha comentado, un sprite se construye añadiendo columnas de 8 píxeles d
 - [`sp1_CreateSpr`](z88dk-sp1.md#sp1_createspr): Crea un sprite básico, reservando espacio para el padding vertical.
 - [`sp1_AddColSpr`](z88dk-sp1.md#sp1_addcolspr): Agrega una columna de datos al sprite
 - [`sp1_MoveSprAbs`](z88dk-sp1.md#sp1_movesprabs): Mueve un sprite a coordenadas absolutas en pantalla
+- [`sp1_IterateSprChar`](z88dk-sp1.md#sp1_iteratesprchar): Itera sobre las celdas de un sprite, permitiendo asignar atributos de color a cada celda.
 - [`sp1_UpdateNow`](z88dk-sp1.md#sp1_updatenow): Ejecuta el motor de actualización diferencial, redibujando solo las celdas marcadas como "sucias".
 - [`SP1_DRAW_LOAD1LB` / `SP1_DRAW_LOAD1RB`](z88dk-sp1.md#sp1_draw_load1lb--sp1_draw_load1rb): Funciones de dibujo que usa un byte con control de bordes izquierdo/derecho.
 
 Véase [Indice.md](Indice.md) para más información sobre la documentación general del proyecto.
 
 ## Ejercicios prácticos
+
 ## Conclusión
