@@ -58,7 +58,7 @@ int main(void)
 
         break;
     case 4:
-        // run_module4();
+        run_module4();
         break;
     default:
         printf("Modulo no encontrado");

@@ -23,8 +23,6 @@ void run_module3_3_1(void);
 void run_module3_3_2(void);
 void run_module3_4_1(void);
 void run_module3_4_2(void);
-//  void run_example4(void);
-//  void run_example5(void);
-//  void run_example6(void);
+void run_module4(void);
 
 #endif // __MODULES_H__
