@@ -40,7 +40,7 @@ static void main_loop(void)
     sp1_UpdateNow();
 }
 
-void run_module3_4_1(void)
+void run_module4(void)
 {
     sp1_Initialize(SP1_IFLAG_MAKE_ROTTBL | SP1_IFLAG_OVERWRITE_TILES | SP1_IFLAG_OVERWRITE_DFILE,
                    INK_WHITE | PAPER_BLACK, 'X');

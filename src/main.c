@@ -6,8 +6,8 @@
 
 /** Cambiar por el numero de tutorial a ejecutar */
 int module = 3;
-int submodule = 4;
-int sample = 2;
+int submodule = 1;
+int sample = 0;
 
 int main(void)
 {

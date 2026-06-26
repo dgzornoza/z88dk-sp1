@@ -17,7 +17,7 @@ static void set_sprite_colour(unsigned int count, struct sp1_cs *c)
 static void init_player(void)
 {
     // Crear sprite sin mascara
-    player_sprite = sp1_CreateSpr(SP1_DRAW_LOAD1LB, SP1_TYPE_1BYTE, 2, (int)sprite_circle, 0);
+    player_sprite = sp1_CreateSpr(SP1_DRAW_LOAD1LB, SP1_TYPE_1BYTE, 3, (int)sprite_circle, 0);
 
     // Añadir columnas (una por cada 8px de ancho),
     // en este caso como solo es un sprite 8x8 (un caracter), en la columna se define con la etiqueta de fin con 'SP1_DRAW_LOAD1RB'
