@@ -1,6 +1,6 @@
 # Módulo 2: Gráficos de Fondo y Tiles con ZX Paintbrush
 
-En este módulo aprenderemos a gestionar el fondo de nuestros juegos utilizando **UDGs** (User-Defined Graphics), pueden diseñarse con cualquier herramienta de dibujo y exportar en png, desde zx-ide se podran generar los datos del dibujo con el comando 'attach-image-data'. 
+En este módulo aprenderemos a gestionar el fondo de nuestros juegos utilizando **UDGs** (User-Defined Graphics), pueden diseñarse con cualquier herramienta de dibujo y exportar en png, desde zx-ide se podran generar los datos del dibujo con el comando 'attach-image-data'.
 La tecnica de tiles, es fundamental para crear escenarios visualmente ricos sin agotar la memoria del ZX Spectrum.
 
 Codigo base: [src/modules/module2.c](../src/modules/module2.c)
@@ -45,14 +45,14 @@ El secreto de la velocidad de **SP1** es su motor de actualización diferencial:
 3. Cuando modificamos el fondo o movemos un objeto, la celda afectada se añade a esta lista automáticamente.
 4. Al llamar a `sp1_UpdateNow()`, el motor recorre la lista y redibuja únicamente las celdas que han cambiado. Esto permite un funcionamiento **libre de parpadeos (flicker-free)** sin necesidad de sincronizar con el haz de luz del monitor.
 
-
 ## 3. Conceptos clave
 
 - **Attribute Clash**: El Spectrum gestiona el color en bloques de 8x8. Si dos elementos con diferentes colores de tinta (INK) coinciden en la misma celda, ocurrirá un choque de atributos. Por ello, es común diseñar héroes en blanco y negro sobre fondos de color.
 
-- **Invalidación Automática**: Al usar sp1_PrintAt, SP1 marca la celda como "sucia" automáticamente. Si una celda se invalida varias veces en el mismo ciclo, el motor solo la redibuja una vez para ahorrar tiempo de CPU.
+- **Invalidación Automática**: Al usar sp1_PrintAtInv, SP1 marca la celda como "sucia" automáticamente. Si una celda se invalida varias veces en el mismo ciclo, el motor solo la redibuja una vez para ahorrar tiempo de CPU.
 
 - **Limitación de Scroll**: Debido a su naturaleza diferencial, SP1 no está diseñado para scroll de píxeles, aunque permite realizar desplazamientos por celdas completas (8 píxeles).  
 
 ## Ejercicios prácticos
+
 ## Conclusión

@@ -5,8 +5,8 @@
 #include <input/input_zx.h>
 
 /** Cambiar por el numero de tutorial a ejecutar */
-int module = 3;
-int submodule = 1;
+int module = 2;
+int submodule = 0;
 int sample = 0;
 
 int main(void)
